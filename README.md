@@ -1,4 +1,3 @@
-![visitor badge](https://visitor-badge.glitch.me/badge?page_id=tulparyazilim/react-native-typescript.visitor-badge)
 ![React Native Boilerplate Stars](https://img.shields.io/github/stars/tulparyazilim/react-native-typescript)
 ![React Native Boilerplate Top Language](https://img.shields.io/github/languages/top/tulparyazilim/react-native-typescript)
 ![React Native Boilerplate TypeScript](https://badgen.net/npm/types/tslib)
