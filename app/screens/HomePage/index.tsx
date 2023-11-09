@@ -12,7 +12,6 @@ interface Location {
   longitude: number;
 }
 
-
 const HomePage = () => {
   const navigation = useNavigation<HomeStackNavigationPropsType>();
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
