@@ -1,7 +1,7 @@
-import React, {memo, ReactElement, useCallback, useEffect, useState} from 'react';
-import {LayoutChangeEvent, Pressable, StyleProp, StyleSheet, ViewStyle} from 'react-native';
+import React, { memo, ReactElement, useCallback, useEffect, useState } from 'react';
+import { LayoutChangeEvent, Pressable, StyleProp, StyleSheet, ViewStyle } from 'react-native';
 
-import {Easing, useAnimatedStyle, useSharedValue, withTiming} from 'react-native-reanimated';
+import { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import AppIcon from '../AppIcon';
 import Block from '../Block';
@@ -16,7 +16,7 @@ export type AppCollapsibleType = {
   isOpen?: boolean;
 };
 
-const AppCollapsible = ({title, collapseHeaderHeight = 56, defaultHeight = 0, children = <></>, style = {}, isOpen = false}: AppCollapsibleType) => {
+const AppCollapsible = ({ title, collapseHeaderHeight = 56, defaultHeight = 0, children = <></>, style = {}, isOpen = false }: AppCollapsibleType) => {
   const titleType = typeof title;
 
   const heightAnim = useSharedValue(defaultHeight);
@@ -40,8 +40,7 @@ const AppCollapsible = ({title, collapseHeaderHeight = 56, defaultHeight = 0, ch
   }, [isCollapseOpen, layoutHeight]);
 
   const onLayout = useCallback((event: LayoutChangeEvent) => {
-    const {height} = event.nativeEvent.layout;
-    console.log(height);
+    const { height } = event.nativeEvent.layout;
     setLayoutHeight(height);
   }, []);
 

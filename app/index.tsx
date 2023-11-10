@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Keyboard, Text } from 'react-native';
+import { Keyboard } from 'react-native';
 import 'react-native-gesture-handler';
 
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
@@ -16,6 +16,7 @@ import { persistor, settingsRedux, store } from '@/store';
 
 const MainContainer = () => {
   const dispatch = useAppDispatch();
+
   const language = useAppSelector(state => state.settings.language);
   const theme = useAppSelector(state => state.settings.theme);
 
@@ -26,7 +27,6 @@ const MainContainer = () => {
       Keyboard.removeAllListeners('keyboardDidShow');
       Keyboard.removeAllListeners('keyboardDidHide');
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -43,14 +43,13 @@ const MainContainer = () => {
   );
 };
 
-
 const App = () => {
-
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <MainContainer />
       </PersistGate>
+
       <Toast config={toastConfig} />
     </Provider>
   );
