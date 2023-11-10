@@ -8,9 +8,6 @@ export type BottomTabStackNavigationProps = {
   [Routes.HOME_ROOT]: {
     name: string;
   };
-  [Routes.MORE_SCREEN]: undefined;
-  [Routes.CYCLE_SCREEN]: undefined;
-  [Routes.SPORTS_CENTER_SCREEN]: undefined;
 };
 
 export type BottomTabStackNavigationPropsType = StackNavigationProp<BottomTabStackNavigationProps>;

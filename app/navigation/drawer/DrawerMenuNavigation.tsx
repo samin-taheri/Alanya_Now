@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
 import { DrawerMenuItemList } from './DrawerMenuItems';
 
 const Drawer = createDrawerNavigator();

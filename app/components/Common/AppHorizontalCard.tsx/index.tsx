@@ -21,6 +21,7 @@ interface CochingCardProps {
 const AppHorizontalChallengeCard: React.FC<CochingCardProps> = ({ }) => {
     return (
         <View style={styles.container}>
+            <AppLable title="Activities" />
             <FlatList
                 data={cardData}
                 keyExtractor={(item) => item.id}

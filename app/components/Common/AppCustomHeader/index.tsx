@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, StyleSheet, Platform, Image, Pressable, TouchableOpacity } from 'react-native';
-import { Routes } from '@/navigation';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Feather from 'react-native-vector-icons/Feather'
 import Text from '../Text';
 import { COLORS } from '@/theme';

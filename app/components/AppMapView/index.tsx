@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Dimensions, Linking, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import AppLable from '../Common/AppLable';
 
 interface Location {
     latitude: number;
@@ -27,7 +28,8 @@ const AppMapView = () => {
     }, [])
 
     return (
-        <View>
+        <View style={styles.container}>
+            <AppLable title="Map" />
             <SafeAreaView style={styles.mapContainer}>
                 <MapView
                     provider={PROVIDER_GOOGLE}
@@ -48,7 +50,8 @@ const AppMapView = () => {
                 </MapView>
             </SafeAreaView>
             <TouchableOpacity style={{
-                marginLeft: '5%',
+                marginLeft: '3%',
+                marginTop: '2%'
             }}
                 onPress={() => Linking.openURL('google.navigation:q=36.54375+31.99982')}>
                 <Text style={{ color: '#000', fontSize: 13, fontWeight: 'bold', }}>Open on Maps</Text>
@@ -65,17 +68,16 @@ const windowHeight = Dimensions.get('window').height;
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 10,
-        marginBottom: 16,
+        paddingLeft: 8,
+        paddingRight: 8,
     },
     mapContainer: {
         height: 230,
         zIndex: -1,
         borderRadius: 12,
         overflow: 'hidden',
-        alignItems: 'center',
-        justifyContent: 'center',
-        margin: 15
+        marginLeft: 8,
+        marginRight: 8
     },
     scrollContainer: {
         padding: 16,
