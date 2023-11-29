@@ -5,7 +5,6 @@ import {HomeStackNavigationProps} from './types';
 import routes from '../../Routes';
 import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
-import { DrawerMenuNavigaiton } from '@/navigation/drawer';
 
 const Screens = [
   {
@@ -42,12 +41,6 @@ const Screens = [
     title: 'form',
     name: routes.FORM_SCREEN,
     component: FormPage,
-    headerShown: false,
-  },
-  {
-    title: 'Side Menu',
-    name: routes.MAIN_DRAWER_ROOT,
-    component: DrawerMenuNavigaiton,
     headerShown: false,
   },
 ] as Array<IScreen<HomeStackNavigationProps>>;

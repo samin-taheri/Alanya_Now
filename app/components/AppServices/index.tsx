@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, StyleSheet, Pressable, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useRef } from 'react';
+import { View, StyleSheet, Pressable, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { COLORS } from '@/theme';
 import { Text } from '../Common';
 import Feather from 'react-native-vector-icons/Feather';
@@ -25,7 +25,6 @@ const servicesData = [
 ];
 
 const AppServices: React.FC<AppServicesProps> = ({ style }) => {
-
     return (
         <View style={{ padding: 8 }}>
             <AppLable title="Services" />
@@ -42,8 +41,8 @@ const AppServices: React.FC<AppServicesProps> = ({ style }) => {
                         ))}
                     </View>
                 </ScrollView>
-            </View>
-        </View>
+            </View >
+        </View >
     );
 };
 
