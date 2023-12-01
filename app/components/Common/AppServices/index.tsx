@@ -1,30 +1,32 @@
 import React, { useRef } from 'react';
 import { View, StyleSheet, Pressable, ScrollView, TouchableOpacity, Animated } from 'react-native';
 import { COLORS } from '@/theme';
-import { Text } from '../Common';
+import { Text } from '../..';
 import Feather from 'react-native-vector-icons/Feather';
-import AppLable from '../Common/AppLable';
+import AppLable from '../AppLable';
 
 interface AppServicesProps {
     style?: any;
+    onPress: (id: string) => void;
 }
 
 const servicesData = [
-    { title: 'Organizations', onPress: () => console.log('Service 1 pressed'), icon: 'grid' },
-    { title: 'Discounts', onPress: () => console.log('Service 2 pressed'), icon: 'percent' },
-    { title: 'Events', onPress: () => console.log('Service 3 pressed'), icon: 'calendar' },
-    { title: 'Useful Stories', onPress: () => console.log('Service 4 pressed'), icon: 'star' },
-    { title: 'Pharmacies', onPress: () => console.log('Service 5 pressed'), icon: 'plus' },
-    { title: 'News', onPress: () => console.log('Service 6 pressed'), icon: 'file-text' },
-    { title: 'Currency', onPress: () => console.log('Service 7 pressed'), icon: 'dollar-sign' },
-    { title: 'Transfer', onPress: () => console.log('Service 8 pressed'), icon: 'map-pin' },
-    { title: 'Transactions', onPress: () => console.log('Service 9 pressed'), icon: 'briefcase' },
-    { title: 'Photo Reports', onPress: () => console.log('Service 10 pressed'), icon: 'camera' },
-    { title: 'Activities', onPress: () => console.log('Service 11 pressed'), icon: 'sun' },
-    { title: 'Tours and Trips', onPress: () => console.log('Service 12 pressed'), icon: 'layers' },
+    { id: '1', title: 'Organizations', icon: 'grid' },
+    { id: '2', title: 'Discounts', icon: 'percent' },
+    { id: '3', title: 'Events', icon: 'calendar' },
+    { id: '4', title: 'Useful Stories', icon: 'star' },
+    { id: '5', title: 'Pharmacies', icon: 'plus' },
+    { id: '6', title: 'News', icon: 'file-text' },
+    { id: '7', title: 'Currency', icon: 'dollar-sign' },
+    { id: '8', title: 'Transfer', icon: 'map-pin' },
+    { id: '9', title: 'Transactions', icon: 'briefcase' },
+    { id: '10', title: 'Photo Reports', icon: 'camera' },
+    { id: '11', title: 'Activities', icon: 'sun' },
+    { id: '12', title: 'Tours and Trips', icon: 'layers' },
 ];
 
-const AppServices: React.FC<AppServicesProps> = ({ style }) => {
+const AppServices: React.FC<AppServicesProps> = ({ style, onPress }) => {
+
     return (
         <View style={{ padding: 8 }}>
             <AppLable title="Services" />
@@ -32,7 +34,7 @@ const AppServices: React.FC<AppServicesProps> = ({ style }) => {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={styles.brandsContainer}>
                         {servicesData.map((data, index) => (
-                            <Pressable onPress={data.onPress} key={index} style={[styles.cardContainer, style]}>
+                            <Pressable key={index} style={[styles.cardContainer, style]} onPress={() => onPress(data.id)}>
                                 <View style={styles.iconContainer}>
                                     <Feather name={data.icon} size={20} color={COLORS.primary} />
                                 </View>
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     cardContainer: {
-        width: '47.5%',
+        width: '47%',
         backgroundColor: 'white',
         padding: 12,
         margin: 4.5,
@@ -103,12 +105,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
         flexDirection: 'row',
+        elevation: 3,
+        shadowColor: 'gray',
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
     },
     titleText: {
         fontWeight: 'bold',
     },
     iconContainer: {
-        width: 40, // Set a fixed width for the icon container
+        width: 30,
         alignItems: 'center',
         marginRight: 10,
     },

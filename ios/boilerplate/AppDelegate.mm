@@ -2,6 +2,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 
+#import <GoogleMaps/GoogleMaps.h>
+
 /**
  Deletes all Keychain items accessible by this app if this is the first time the user launches the app
  */
@@ -27,11 +29,13 @@ static void ClearKeychainIfNecessary() {
     }
 }
 
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+  [GMSServices provideAPIKey:@"AIzaSyAETJnW0kmVygmpX-rPsq0s8ZR8GnVmvrI"]; // add this line using the api key obtained from Google Console
+
   self.moduleName = @"boilerplate";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

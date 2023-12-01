@@ -17,4 +17,8 @@ export enum ICONS {
     cycle= "cycle" ,
     network = "network",
     grid= "grid",
+    star= "star",
+    user= "user",
+    heart= "heart",
+    location= "location-pin"
   }

@@ -16,7 +16,7 @@ const AppCustomHeader: React.FC<CustomHeaderProps> = ({ title, onBack, onLogo, n
     return (
         <View style={styles.container}>
             {onBack && (
-                <TouchableOpacity onPress={onBack} style={{ paddingTop: '2%', paddingLeft: '5%' }}>
+                <TouchableOpacity onPress={onBack} style={{ paddingTop: '10%', paddingLeft: '5%' }}>
                     <Feather name="arrow-left" size={30} color={'#000'} />
                 </TouchableOpacity>
             )}
@@ -26,7 +26,7 @@ const AppCustomHeader: React.FC<CustomHeaderProps> = ({ title, onBack, onLogo, n
             {onLogo && (
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingTop: Platform.OS === 'ios' ? '10%' : '1%' }}>
                     <View style={styles.leftContainer}>
-                        <Text style={{ fontSize: 21, fontWeight: 'bold', color: COLORS.primary }}>Location</Text>
+                        <Text style={{ fontSize: 21, fontWeight: 'bold', color: COLORS.primary }}>Alanya Now</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', paddingLeft: Platform.OS === 'ios' ? '35%' : '40%' }}>
                         <Feather name="map-pin" size={20} color={COLORS.primary} style={{ paddingRight: 20 }} />
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignSelf: 'center',
-        bottom: Platform.OS === 'ios' ? '0%' : '2.5%'
+        top: Platform.OS === 'ios' ? '0%' : '2.5%'
     },
     container: {
         backgroundColor: 'white',

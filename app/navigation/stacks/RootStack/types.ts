@@ -13,6 +13,9 @@ export type RootStackNavigationProps = {
   [Routes.FORGOTPASSWORD_SCREEN]: undefined;
   [Routes.SIGNUP_SCREEN]: undefined;
   [Routes.ALERT]: DialogProps;
+  [Routes.SERVICES_DETAILS]: {
+    id: string;
+  }; 
 };
 
 export type RootStackNavigationPropsType = StackNavigationProp<RootStackNavigationProps>;

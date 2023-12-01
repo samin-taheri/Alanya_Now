@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Dimensions, Linking, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import AppLable from '../Common/AppLable';
+import AppLable from '../AppLable';
 
 interface Location {
     latitude: number;
@@ -43,6 +43,8 @@ const AppMapView = () => {
                     showsUserLocation={true}
                     zoomEnabled={true}
                     zoomControlEnabled={true}
+                    showsScale={true}
+                    showsCompass={true}
                 >
                     <Marker
                         description='Delivery'

@@ -5,6 +5,7 @@ import {HomeStackNavigationProps} from './types';
 import routes from '../../Routes';
 import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
+import ServicesDetails from '@/screens/ServicesDetails';
 
 const Screens = [
   {
@@ -41,6 +42,12 @@ const Screens = [
     title: 'form',
     name: routes.FORM_SCREEN,
     component: FormPage,
+    headerShown: false,
+  },
+  {
+    title: 'Services Details',
+    name: routes.SERVICES_DETAILS,
+    component: ServicesDetails,
     headerShown: false,
   },
 ] as Array<IScreen<HomeStackNavigationProps>>;

@@ -1,4 +1,4 @@
-import { FetchDataPage, FormPage, HomePage, LoginPage, SignUp} from '@/screens';
+import { FetchDataPage, FormPage, HomePage, LoginPage, SignUp, SplashScreen} from '@/screens';
 import {IScreen} from '@/utils';
 import {BottomTabStackNavigationProps} from './types';
 import {ICONS} from '../../utils/icon-enums';
@@ -16,21 +16,21 @@ export const Screens = [
     title: 'Fetch data',
     name: Routes.FETCH_DATA_SCREEN,
     component: FetchDataPage,
-    icon: ICONS.network,
+    icon: ICONS.grid,
     headerShown: false,
   },
   {
     title: 'Form',
     name: Routes.SIGNUP_SCREEN,
     component: SignUp,
-    icon: ICONS.cycle,
+    icon: ICONS.star,
     headerShown: false,
   },
   {
     title: 'Login',
     name: Routes.LOGIN_SCREEN,
     component: LoginPage,
-    icon: ICONS.grid,
+    icon: ICONS.location,
     headerShown: false,
   },
 ] as unknown as IScreen<BottomTabStackNavigationProps>[];

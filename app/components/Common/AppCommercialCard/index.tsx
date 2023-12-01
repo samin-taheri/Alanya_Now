@@ -39,7 +39,6 @@ const AppCommercialCard: React.FC<AppCommercialCardProps> = ({ title, background
             >
                 <Pressable style={styles.cardContainer} onPressIn={handlePressIn}
                     onPressOut={handlePressOut}>
-
                     <ImageBackground source={backgroundImage} style={styles.cardBackground} imageStyle={{ opacity: 0.8 }}>
                         <View style={styles.backgroundOverlay}></View>
                         <View style={styles.cardContent}>
@@ -79,10 +78,10 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     title: {
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: 'bold',
         paddingRight: '32%',
-        color: 'black',
+        color: COLORS.black,
     },
     buttonContainer: {
         backgroundColor: COLORS.primary,

@@ -31,7 +31,7 @@ const AppSplash: React.FC<SplashIconsProps> = ({ onPress }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to</Text>
-            <Text style={styles.title2}>Real Estate App</Text>
+            <Text style={styles.title2}>Alanya Now</Text>
             <Text style={styles.text}>Choose an account to login</Text>
             <View style={{ flexDirection: 'row', marginTop: 60 }}>
                 <TouchableOpacity style={styles.box1} onPress={() => navigation.navigate(Routes.MAIN_TABS_ROOT)}>

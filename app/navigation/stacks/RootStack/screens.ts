@@ -7,6 +7,7 @@ import Routes from '../../Routes';
 import HomeStack from '../HomeStack';
 import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
+import ServicesDetails from '@/screens/ServicesDetails';
 
 const Screens = [
   {
@@ -50,7 +51,14 @@ const Screens = [
     name: Routes.MAIN_TABS_ROOT,
     component: BottomTabNavigation,
     headerShown: false,
+  },  
+  {
+    title: 'Services Details',
+    name: Routes.SERVICES_DETAILS,
+    component: ServicesDetails,
+    headerShown: false,
   },
+
 ] as Array<IScreen<RootStackNavigationProps>>;
 
 export default Screens;

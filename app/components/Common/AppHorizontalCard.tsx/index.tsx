@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import AppLable from "../AppLable";
-import AppBackgroundImageCard from "../AppBackgroundImageCard.tsx";
+import AppBackgroundImageCard from "../AppBackgroundImageCard";
 
 const cardData = [
     { id: '1', title: 'Welcome to the app', intro: 'HIT is the abbrevation of high intenstity interval training. By altering and repeating short-term high-intensity exercise and low-intensity exercise. HIT can achieve high energy consumption in a short time and keep the body burning fat after training. It is very suitable for urban people with fast pace. ', imageSource: require('../../../assets/images/challenge-13.jpg') },
