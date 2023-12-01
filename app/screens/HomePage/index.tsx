@@ -37,7 +37,6 @@ const HomePage = () => {
     getCurrentLocation();
   }, [])
 
-
   return (
     <React.Fragment>
       <StatusBar />
