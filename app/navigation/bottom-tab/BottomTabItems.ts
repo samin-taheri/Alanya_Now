@@ -3,6 +3,7 @@ import {IScreen} from '@/utils';
 import {BottomTabStackNavigationProps} from './types';
 import {ICONS} from '../../utils/icon-enums';
 import Routes from '../Routes';
+import { AboutScreen } from '@/screens/About/AboutScreen';
 
 export const Screens = [
   {
@@ -21,8 +22,8 @@ export const Screens = [
   },
   {
     title: 'Form',
-    name: Routes.SIGNUP_SCREEN,
-    component: SignUp,
+    name: Routes.ABOUT_SCREEN,
+    component: AboutScreen,
     icon: ICONS.star,
     headerShown: false,
   },

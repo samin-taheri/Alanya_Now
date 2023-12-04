@@ -16,7 +16,7 @@ const AppCustomHeader: React.FC<CustomHeaderProps> = ({ title, onBack, onLogo, n
     return (
         <View style={styles.container}>
             {onBack && (
-                <TouchableOpacity onPress={onBack} style={{ paddingTop: '10%', paddingLeft: '5%' }}>
+                <TouchableOpacity onPress={onBack} style={{ paddingTop: Platform.OS === 'ios' ? '10%' : '1%', paddingLeft: '5%' }}>
                     <Feather name="arrow-left" size={30} color={'#000'} />
                 </TouchableOpacity>
             )}
@@ -44,7 +44,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         fontWeight: '600',
-        paddingTop: '9%',
+        paddingTop: Platform.OS === 'ios' ? '9%' : '0%',
+        paddingBottom: Platform.OS === 'ios' ? '0%' : '3%'
+
     },
     withPadding: {
         paddingRight: '10%',

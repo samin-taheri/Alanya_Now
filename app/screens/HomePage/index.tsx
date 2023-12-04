@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { HomeStackNavigationPropsType, Routes } from '@/navigation';
+import { Header, HomeStackNavigationPropsType, Routes } from '@/navigation';
 import { StatusBar, StyleSheet, Text, TouchableOpacity, View, Share, Alert, Button, ScrollView } from 'react-native';
 import AppCustomHeader from '@/components/Common/AppCustomHeader';
 import Geolocation from '@react-native-community/geolocation';
@@ -10,12 +10,12 @@ import AppCommercialCard from '@/components/Common/AppCommercialCard';
 import AppServices from '@/components/Common/AppServices';
 import AppWeatherForecast from '@/components/Common/AppWeatherForcast';
 import AppEventsCard from '@/components/Common/AppEventsCard';
+import AppAutoSlidableCard from '@/components/Common/AppAutoSlidableCard';
 
 interface Location {
   latitude: number;
   longitude: number;
 }
-
 const HomePage = () => {
   const navigation = useNavigation<HomeStackNavigationPropsType>();
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
@@ -49,6 +49,7 @@ const HomePage = () => {
           <AppMapView />
           <AppServices onPress={(id) => navigation.navigate(Routes.SERVICES_DETAILS, { id })} />
           <AppEventsCard />
+          <AppAutoSlidableCard />
         </View>
       </ScrollView>
     </React.Fragment>

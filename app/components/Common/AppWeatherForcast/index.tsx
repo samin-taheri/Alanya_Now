@@ -107,7 +107,7 @@ const AppWeatherForecast: React.FC = ({ }) => {
                         </LinearGradient>
                     </Pressable>
                 </Animated.View>
-                <View style={{ flexDirection: 'column' }}>
+                <View style={{ flexDirection: 'column', flex: 1 }}>
                     <AppSocialShare />
                     <AppCurrency />
                 </View>

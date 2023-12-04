@@ -20,6 +20,7 @@ export type HomeStackNavigationProps = {
   [Routes.SIGNUP_SCREEN]: undefined;
   [Routes.LOGIN_SCREEN]: undefined;
   [Routes.MAIN_TABS_ROOT]: undefined;  
+  [Routes.ABOUT_SCREEN]: undefined;  
   [Routes.MAIN_DRAWER_ROOT]: undefined;  
   [Routes.FORM_SCREEN]: {
     detailId: string;

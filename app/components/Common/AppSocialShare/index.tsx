@@ -46,7 +46,7 @@ const AppSocialShare: React.FC = ({ }) => {
     };
 
     return (
-        <View style={{ padding: 0 }}>
+        <View style={{}}>
             <Animated.View
                 style={[
                     {
@@ -54,11 +54,11 @@ const AppSocialShare: React.FC = ({ }) => {
                     },
                 ]}
             >
-                <AppCard style={{ width: 170, height: 72 }}>
+                <AppCard style={{ width: '90%', height: 72 }}>
                     <Pressable style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} onPressIn={handlePressIn}
                         onPressOut={handlePressOut} onPress={onShare}>
-                        <Feather name="share-2" size={20} color={COLORS.primary} style={{ paddingRight: 10, marginTop: 10 }} />
-                        <Text style={{ fontWeight: '600', fontSize: 14, marginTop: 10 }}>Share the App</Text>
+                        <Feather name="share-2" size={20} color={COLORS.primary} style={{ paddingRight: 10, marginTop: 10, marginLeft: 0 }} />
+                        <Text style={{ fontWeight: '600', fontSize: 14, marginTop: 10, color: '#000' }}>Share the App</Text>
                     </Pressable>
                 </AppCard>
             </Animated.View>

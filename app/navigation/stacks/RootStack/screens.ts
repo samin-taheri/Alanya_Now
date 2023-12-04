@@ -8,6 +8,7 @@ import HomeStack from '../HomeStack';
 import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
 import ServicesDetails from '@/screens/ServicesDetails';
+import { AboutScreen } from '@/screens/About/AboutScreen';
 
 const Screens = [
   {
@@ -56,6 +57,12 @@ const Screens = [
     title: 'Services Details',
     name: Routes.SERVICES_DETAILS,
     component: ServicesDetails,
+    headerShown: false,
+  },
+  {
+    title: 'About Screen',
+    name: Routes.ABOUT_SCREEN,
+    component: AboutScreen,
     headerShown: false,
   },
 

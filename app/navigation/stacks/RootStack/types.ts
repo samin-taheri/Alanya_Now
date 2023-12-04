@@ -12,6 +12,7 @@ export type RootStackNavigationProps = {
   [Routes.MAIN_TABS_ROOT]: undefined;
   [Routes.FORGOTPASSWORD_SCREEN]: undefined;
   [Routes.SIGNUP_SCREEN]: undefined;
+  [Routes.ABOUT_SCREEN]: undefined;
   [Routes.ALERT]: DialogProps;
   [Routes.SERVICES_DETAILS]: {
     id: string;

@@ -6,6 +6,7 @@ import routes from '../../Routes';
 import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
 import ServicesDetails from '@/screens/ServicesDetails';
+import { AboutScreen } from '@/screens/About/AboutScreen';
 
 const Screens = [
   {
@@ -48,6 +49,12 @@ const Screens = [
     title: 'Services Details',
     name: routes.SERVICES_DETAILS,
     component: ServicesDetails,
+    headerShown: false,
+  },
+  {
+    title: 'About Screen',
+    name: routes.ABOUT_SCREEN,
+    component: AboutScreen,
     headerShown: false,
   },
 ] as Array<IScreen<HomeStackNavigationProps>>;
