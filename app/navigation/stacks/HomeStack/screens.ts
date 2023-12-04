@@ -7,6 +7,7 @@ import ForgotPassword from '@/screens/ForgotPassword';
 import SignUp from '@/screens/SignUp';
 import ServicesDetails from '@/screens/ServicesDetails';
 import { AboutScreen } from '@/screens/About/AboutScreen';
+import EventDetails from '@/screens/EventDetails';
 
 const Screens = [
   {
@@ -49,6 +50,12 @@ const Screens = [
     title: 'Services Details',
     name: routes.SERVICES_DETAILS,
     component: ServicesDetails,
+    headerShown: false,
+  },
+  {
+    title: 'Event Details',
+    name: routes.EVENT_DETAILS,
+    component: EventDetails,
     headerShown: false,
   },
   {

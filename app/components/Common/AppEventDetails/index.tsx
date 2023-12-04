@@ -1,8 +1,14 @@
-import React, { useRef } from "react";
-import { View, StyleSheet, ImageBackground, Pressable, Animated } from "react-native";
-import Text from "../Text";
-import { useNavigation } from "@react-navigation/native";
-import { HomeStackNavigationPropsType, Routes } from "@/navigation";
+import React from 'react';
+import { View, StyleSheet, ImageBackground, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { COLORS } from '@/theme';
+import { Text } from '../..';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import AppCustomHeader from '../AppCustomHeader';
+import { HomeStackNavigationPropsType } from '@/navigation';
+import Feather from 'react-native-vector-icons/Feather';
+import { ScrollView } from 'react-native-gesture-handler';
+import AppMapView from '../AppMapView';
+import AppCard from '../AppCard';
 
 const cardData = [
     { id: '1', title: 'Welcome to the app', intro: 'HIT is the abbrevation of high intenstity interval training. By altering and repeating short-term high-intensity exercise and low-intensity exercise. HIT can achieve high energy consumption in a short time and keep the body burning fat after training. It is very suitable for urban people with fast pace. ', imageSource: require('../../../assets/images/challenge-13.jpg') },
@@ -16,122 +22,118 @@ const cardData = [
     { id: '9', title: 'Favorites', intro: 'HIT is the abbrevation of high intenstity interval training. By altering and repeating short-term high-intensity exercise and low-intensity exercise. HIT can achieve high energy consumption in a short time and keep the body burning fat after training. It is very suitable for urban people with fast pace. ', imageSource: require('../../../assets/images/challenge-11.jpg') },
     { id: '10', title: 'Profile upgrade', intro: 'HIT is the abbrevation of high intenstity interval training. By altering and repeating short-term high-intensity exercise and low-intensity exercise. HIT can achieve high energy consumption in a short time and keep the body burning fat after training. It is very suitable for urban people with fast pace. ', imageSource: require('../../../assets/images/challenge-12.jpg') },
 ];
-
-interface AppBackgroundImageCardProps {
-    imageSource: { uri: string };
-    title: string;
+interface DataItem {
     id: string;
-    onPress: (id: string) => void;
+    imageSource: ImageSourcePropType;
 }
-const AppBackgroundImageEvents: React.FC<AppBackgroundImageCardProps> = ({
-    imageSource,
-    title,
-    id,
-    onPress
-}) => {
+
+const AppEventDetails: React.FC = ({ }) => {
     const navigation = useNavigation<HomeStackNavigationPropsType>();
-    const scaleValue = useRef(new Animated.Value(1)).current;
+    const route = useRoute();
+    const { id } = route.params as { id: string };
+    const selectedItem = cardData.find(item => item.id === id);
+    if (selectedItem) {
+        return (
+            <View style={styles.container}>
+                <View style={styles.imageContainer}>
+                    <ImageBackground source={selectedItem.imageSource} style={styles.image}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                            <Feather name="arrow-left" size={30} color={'#fff'} />
+                        </TouchableOpacity>
 
-
-    const handlePressIn = () => {
-        Animated.spring(scaleValue, {
-            toValue: 0.9,
-            friction: 5,
-            tension: 40,
-            useNativeDriver: false,
-        }).start();
-    };
-
-    const handlePressOut = () => {
-        Animated.spring(scaleValue, {
-            toValue: 1,
-            friction: 3,
-            tension: 40,
-            useNativeDriver: false,
-        }).start();
-    };
-
-    return (
-        <View style={styles.cardContainer}>
-            <Pressable
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
-                style={styles.card}
-                onPress={() => onPress(id)}
-            >
-                <Animated.View
-                    style={[
-                        {
-                            transform: [{ scale: scaleValue }],
-                        },
-                    ]}
-                >
-                    <ImageBackground source={imageSource} style={styles.cardBackground}>
-                        <View style={styles.card}>
-                            <View style={styles.content}>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.title}>{title}</Text>
-                                </View>
-                            </View>
-                        </View>
                     </ImageBackground>
-                </Animated.View>
-            </Pressable>
-        </View>
-    );
-};
-
+                </View>
+                <ScrollView>
+                    <View style={{ padding: 8 }}>
+                        <AppCard>
+                            <View style={styles.textContainer}>
+                                <Text style={styles.title}>{selectedItem.title}</Text>
+                                <Text style={styles.title2}>{selectedItem.intro}</Text>
+                            </View>
+                        </AppCard>
+                    </View>
+                    <AppMapView />
+                </ScrollView>
+            </View>
+        )
+    }
+    return null;
+}
 const styles = StyleSheet.create({
-    cardContainer: {
-        position: "relative",
-    },
-    cardBackground: {
-        width: 300,
-        height: 150,
-        borderRadius: 12,
-        overflow: "hidden",
-        margin: 8,
-    },
-    card: {
+    container: {
         flex: 1,
-        backgroundColor: "rgba(255, 255, 255, 0)",
-    },
-    content: {
-        flex: 1,
-        padding: 16,
-        justifyContent: "space-between",
     },
     textContainer: {
-        justifyContent: "flex-end",
-        marginBottom: 10
+        flex: 1,
     },
-    iconContainers: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        flexDirection: "row",
-        justifyContent: "space-between",
+    container2: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 16,
+        marginTop: 10
+    },
+    backButton: {
+        position: 'absolute',
+        top: '14%',
+        left: '2%',
+        zIndex: 1,
+        padding: 16,
+    },
+    imageContainer: {
+        position: 'relative',
+    },
+    image: {
+        width: '100%',
+        height: 250,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+    },
+    cardContent: {
         padding: 10,
-    },
-    iconContainer: {
-        alignItems: "center",
+        width: '93%',
+        marginLeft: '3.5%',
+        marginTop: 150,
         borderRadius: 12,
-        backgroundColor: "rgba(255, 255, 255, 0.4)",
-        flexDirection: "row",
-        alignContent: "flex-end",
-        padding: 6,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     title: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: "bold",
-        marginBottom: 8,
-        color: "#fff",
+        padding: 10,
+        textAlign: 'left',
     },
-    description: {
+    introTitle: {
         fontSize: 14,
-        color: "#fff",
+        fontWeight: "bold",
+        padding: 10,
+        textAlign: 'left',
+    },
+    title2: {
+        fontSize: 14,
+        padding: 10,
+        textAlign: 'left',
+        paddingTop: 10
+    },
+    cardContainer: {
+        overflow: 'hidden',
+        borderRadius: 12,
+    },
+    iconContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 12,
+        backgroundColor: COLORS.white,
+        flexDirection: 'row',
+        alignContent: 'center',
+        marginTop: 5,
+        padding: 0,
+        width: 120,
     },
 });
 
-export default AppBackgroundImageEvents;
+export default AppEventDetails;
+
+

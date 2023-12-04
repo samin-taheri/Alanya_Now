@@ -16,6 +16,9 @@ export type RootStackNavigationProps = {
   [Routes.ALERT]: DialogProps;
   [Routes.SERVICES_DETAILS]: {
     id: string;
+  };  
+  [Routes.EVENT_DETAILS]: {
+    id: string;
   }; 
 };
 

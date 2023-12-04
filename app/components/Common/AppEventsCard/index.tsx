@@ -17,8 +17,9 @@ const cardData = [
 ];
 
 interface CochingCardProps {
+    onPress: (id: string) => void;
 }
-const AppEventsCard: React.FC<CochingCardProps> = ({ }) => {
+const AppEventsCard: React.FC<CochingCardProps> = ({ onPress }) => {
     return (
         <View style={styles.container}>
             <AppLable title="Events" />
@@ -32,6 +33,7 @@ const AppEventsCard: React.FC<CochingCardProps> = ({ }) => {
                         imageSource={item.imageSource}
                         title={item.title}
                         id={item.id}
+                        onPress={() => onPress(item.id)}
                     />
                 )}
             />

@@ -15,6 +15,9 @@ export type HomeStackNavigationProps = {
   [Routes.SERVICES_DETAILS]: {
     id: string;
   }; 
+  [Routes.EVENT_DETAILS]: {
+    id: string;
+  }; 
   [Routes.HOME_ROOT]: undefined;
   [Routes.FORGOTPASSWORD_SCREEN]: undefined;
   [Routes.SIGNUP_SCREEN]: undefined;

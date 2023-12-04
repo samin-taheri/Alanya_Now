@@ -48,7 +48,7 @@ const HomePage = () => {
           <AppWeatherForecast />
           <AppMapView />
           <AppServices onPress={(id) => navigation.navigate(Routes.SERVICES_DETAILS, { id })} />
-          <AppEventsCard />
+          <AppEventsCard onPress={(id) => navigation.navigate(Routes.EVENT_DETAILS, { id })} />
           <AppAutoSlidableCard />
         </View>
       </ScrollView>

@@ -1,3 +1,4 @@
+import { COLORS } from '@/theme';
 import React, { useRef, useState, useEffect } from 'react';
 import {
     View,
@@ -8,6 +9,7 @@ import {
     FlatList,
     Dimensions,
     ImageSourcePropType,
+    Animated,
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
@@ -39,6 +41,7 @@ const slides: Slide[] = [
 const AutoSlidableComponent: React.FC = () => {
     const flatListRef = useRef<FlatList<Slide>>(null);
     const [currentPage, setCurrentPage] = useState(0);
+    const scrollX = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -70,24 +73,39 @@ const AutoSlidableComponent: React.FC = () => {
         );
     };
 
-    const renderItem = ({ item }: { item: Slide }) => (
-        <View style={styles.slide}>
-            <ImageBackground
-                source={item.image}
-                style={styles.imageBackground}
-                imageStyle={styles.image}
+    const renderItem = ({ item, index }: { item: Slide; index: number }) => {
+        const inputRange = [(index - 1) * width, index * width, (index + 1) * width];
+        const opacity = scrollX.interpolate({
+            inputRange,
+            outputRange: [0, 1, 0],
+        });
+
+        return (
+            <Animated.View
+                style={[
+                    styles.slide,
+                    {
+                        opacity,
+                    },
+                ]}
             >
-                <TouchableOpacity
-                    style={styles.cardContent}
-                    onPress={() => {
-                        // Handle card press if needed
-                    }}
+                <ImageBackground
+                    source={item.image}
+                    style={styles.imageBackground}
+                    imageStyle={styles.image}
                 >
-                    <Text style={styles.text}>{item.text}</Text>
-                </TouchableOpacity>
-            </ImageBackground>
-        </View>
-    );
+                    <TouchableOpacity
+                        style={styles.cardContent}
+                        onPress={() => {
+                            // Handle card press if needed
+                        }}
+                    >
+                        <Text style={styles.text}>{item.text}</Text>
+                    </TouchableOpacity>
+                </ImageBackground>
+            </Animated.View>
+        );
+    };
 
     return (
         <View style={styles.container}>
@@ -100,11 +118,12 @@ const AutoSlidableComponent: React.FC = () => {
                 keyExtractor={(item, index) => `${item.text}_${index}`}
                 renderItem={renderItem}
                 onMomentumScrollEnd={(event) => {
-                    const newIndex = Math.round(
-                        event.nativeEvent.contentOffset.x / width
-                    );
+                    const newIndex = Math.round(event.nativeEvent.contentOffset.x / width);
                     setCurrentPage(newIndex);
                 }}
+                onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
+                    useNativeDriver: false,
+                })}
             />
             {renderPagination()}
         </View>
@@ -122,7 +141,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 18
+        padding: 18,
     },
     imageBackground: {
         width: '100%',
@@ -143,7 +162,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'white', // Set the text color as needed
+        color: 'white',
     },
     paginationContainer: {
         flexDirection: 'row',
@@ -152,14 +171,18 @@ const styles = StyleSheet.create({
         marginTop: 16,
     },
     paginationDot: {
-        width: 8,
-        height: 8,
+        width: 10,
+        height: 6,
         borderRadius: 4,
-        backgroundColor: 'grey',
+        backgroundColor: '#b3b2b2',
         margin: 4,
     },
     activeDot: {
-        backgroundColor: 'blue', // Change the color of the active dot
+        width: 20,
+        height: 6,
+        borderRadius: 6,
+        backgroundColor: COLORS.primary,
+        margin: 4,
     },
 });
 
